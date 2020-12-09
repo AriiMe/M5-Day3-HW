@@ -13,11 +13,11 @@ const readFile = (fileName) => {
   return JSON.parse(fileContent)
 }
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res, next) => {
   try{
     const studentsDB = readFile("students.json")
     const student = studentsDB.filter(student => student.ID === req.params.id)
-    if(students.length > 0){
+    if(student.length > 0){
       res.send(student)
     }else{
       const err = new Error()
@@ -27,11 +27,11 @@ router.get("/:id", (req, res) => {
     
     
   }catch(error){
-   
+   console.log(error)
   }
 })
 
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
 
   try{
 const studentsDB = readFile("students.json")
@@ -54,7 +54,7 @@ const studentsDB = readFile("students.json")
 router.post("/", [check("name").exists().withMessage("name is a mandatory field"),
 check("description").exists().withMessage("Needs a description"),
 check("repoUrl").exists().isURL().withMessage("has to be a valid repoUrl"),
-check("liveUrl").exists().isURL().withMessage("has to be a valid Live URL"), ], (req, res) => {
+check("liveUrl").exists().isURL().withMessage("has to be a valid Live URL"), ], (req, res, next) => {
   try{
 
     const errors = validationResult(req)

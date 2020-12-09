@@ -5,12 +5,12 @@ const badRequestErrorHandler = (err, req, res, next) =>{
 }
 const forbiddenErrorHandler = (err, req, res, next) =>{
     if(err.httpStatusCode === 403){
-        res.status(403).send('error Frobbiden')
+        res.status(403).send(err.message)
     }next(err)
 }
 const unauthorizedErrorHandler = (err, req, res, next) =>{
     if(err.httpStatusCode === 401){
-        res.status(401).send('error not authorized')
+        res.status(401).send(err.message)
     }next(err)
 }
 const notFoundErrorHandler = (err, req, res, next) =>{
@@ -18,10 +18,10 @@ const notFoundErrorHandler = (err, req, res, next) =>{
         res.status(404).send('Error not found')
     }next(err)
 }
-const catchAllErrorHandler = (err, req, res, next) =>{
+const catchAllErrorHandler = (err, req, res) =>{
     if(!res.headersSent){
         console.log(err)
-        res.status(err.httpStatusCode || 500).send('generic server error')
+        res.status(err.httpStatusCode || 500).send(err.message)
     }
 }
 module.exports = {
