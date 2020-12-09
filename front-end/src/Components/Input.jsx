@@ -31,7 +31,7 @@ export class Input extends Component {
         <Container>
           <Form onSubmit={(e) => this.handleSubmit(e)}>
             <Form.Group>
-              <Form.Label>Repo URL</Form.Label>
+              <Form.Label>Repository URL</Form.Label>
               <Form.Control
                 id="repoUrl"
                 value={this.state.student.repoUrl}

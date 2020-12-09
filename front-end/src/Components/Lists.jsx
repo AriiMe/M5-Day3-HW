@@ -42,11 +42,11 @@ export class Lists extends Component {
                     <Nav.Link href={liveUrl}>Live URL</Nav.Link>
                     <Nav.Link href={repoUrl}>Repo URL</Nav.Link>
                     <Card.Footer>
-                      <small className="text-muted">{ID}</small>
+                      <small className="text-muted">StudentID: {ID}</small>
                     </Card.Footer>
                     <Card.Footer>
                       <small className="text-muted">
-                        {modifiedAt.slice(0, 10)} &nbsp;
+                        At: {modifiedAt.slice(0, 10)} &nbsp; On:{" "}
                         {modifiedAt.slice(11, 16)}
                       </small>
                     </Card.Footer>
